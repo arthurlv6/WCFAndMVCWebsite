@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Project.Data.ProjectDbContextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="VehicleEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_add">
+      <Parameter Name="plate" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="type" Mode="In" Type="String" />
+      <Parameter Name="typeId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_del">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="plate" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="type" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_vehicleData" ReturnType="Collection(Project.Data.ProjectDbContextModel.sp_vehicleData_Result)" />
+    <FunctionImport Name="sp_vehicleTypeData" ReturnType="Collection(Project.Data.ProjectDbContextModel.sp_vehicleTypeData_Result)" />
+  </EntityContainer>
+  <ComplexType Name="sp_vehicleData_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Plate" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="Int32" Name="VehicleTypeId" Nullable="false" />
+    <Property Type="String" Name="Type" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_vehicleTypeData_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" />
+  </ComplexType>
+</Schema>

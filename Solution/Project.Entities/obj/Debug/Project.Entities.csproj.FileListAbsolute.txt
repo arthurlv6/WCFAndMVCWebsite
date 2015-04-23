@@ -1,0 +1,5 @@
+D:\program\2015\Examination\Solution\Project.Entities\bin\Debug\Project.Entities.dll
+D:\program\2015\Examination\Solution\Project.Entities\bin\Debug\Project.Entities.pdb
+D:\program\2015\Examination\Solution\Project.Entities\obj\Debug\Project.Entities.dll
+D:\program\2015\Examination\Solution\Project.Entities\obj\Debug\Project.Entities.pdb
+D:\program\2015\Examination\Solution\Project.Entities\obj\Debug\Project.Entities.csprojResolveAssemblyReference.cache

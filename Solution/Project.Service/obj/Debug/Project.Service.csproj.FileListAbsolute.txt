@@ -1,0 +1,16 @@
+D:\program\2015\Examination\Solution\Project.Service\bin\Debug\Project.Service.dll.config
+D:\program\2015\Examination\Solution\Project.Service\bin\Debug\Project.Service.dll
+D:\program\2015\Examination\Solution\Project.Service\bin\Debug\Project.Service.pdb
+D:\program\2015\Examination\Solution\Project.Service\bin\Debug\EntityFramework.dll
+D:\program\2015\Examination\Solution\Project.Service\bin\Debug\EntityFramework.SqlServer.dll
+D:\program\2015\Examination\Solution\Project.Service\bin\Debug\Project.Data.dll
+D:\program\2015\Examination\Solution\Project.Service\bin\Debug\Project.Entities.dll
+D:\program\2015\Examination\Solution\Project.Service\bin\Debug\Project.Data.pdb
+D:\program\2015\Examination\Solution\Project.Service\bin\Debug\Project.Entities.pdb
+D:\program\2015\Examination\Solution\Project.Service\bin\Debug\EntityFramework.xml
+D:\program\2015\Examination\Solution\Project.Service\bin\Debug\EntityFramework.SqlServer.xml
+D:\program\2015\Examination\Solution\Project.Service\obj\Debug\Project.Service.csprojResolveAssemblyReference.cache
+D:\program\2015\Examination\Solution\Project.Service\obj\Debug\Project.Service.dll
+D:\program\2015\Examination\Solution\Project.Service\obj\Debug\Project.Service.pdb
+D:\program\2015\Examination\Solution\Project.Service\bin\Debug\Project.Contract.dll
+D:\program\2015\Examination\Solution\Project.Service\bin\Debug\Project.Contract.pdb

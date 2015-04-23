@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using Project.Website.Extension
+@model SearchReturn
+<div class="container" style="min-height: 500px;">
+    <div class="section-header">
+        <h2 class="section-title text-center wow fadeInDown">Vehicle List</h2>
+    </div>
+    <div class="box-tools pull-right" style="margin-bottom: 10px;">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "searchform" }))
+        {
+            <table>
+                <tr>
+                    <td>
+                        <label>Page @Html.SelectList_Pages("CurrentPage", Model.CurrentPage, Model.TotalPages, new { onchange = "this.form.submit();" })</label>
+                    </td>
+                    <td>
+                        <label>Display @Html.SelectList_PageSize("PerPageSize", Model.PerPageSize, 10, new { onchange = "this.form.submit();" }) records</label>
+                    </td>
+                    <td>
+                        <div class="sidebar-form" style="width: 200px;margin-left: 10px;margin-right: 10px;margin-top: 0px;margin-bottom: 0px">
+                            
+                            <div class="input-group">
+                                @Html.TextBoxFor(model => model.Search, new { @class = "form-control", placeholder = "Search by Name..." })
+                                <span class="input-group-btn">
+                                    <button type="submit" name="seach" id="search-btn" class="btn btn-default" type="button">Go!</button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+
+    <p>
+        <a href="#" class="btn btn-primary btn-sm" style="color: white" data-toggle="modal" data-target="#ModalAdd">Add vehicle</a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Plate
+            </th>
+            <th>
+                Description
+            </th>
+           
+            <th></th>
+        </tr>
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a href="#" data-toggle="modal" data-target=@Html.Raw("#ModalEdit"+item.Id)>Edit</a> |
+                    <a href="#" data-toggle="modal" data-target=@Html.Raw("#ModalDelete" + item.Id)>Delete</a>
+                    <div class="modal fade" id=@Html.Raw("ModalEdit"+item.Id) tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        @Html.Partial("_Edit", item)
+                    </div>
+                    <div class="modal fade" id=@Html.Raw("ModalDelete" + item.Id) tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        @Html.Partial("_Delete", item)
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    @Html.Partial("_Add", new Vehicle())
+</div>
+@section scripts {
+    <script>
+        function Delete(e) {
+            var id = $(e).attr("data-id");
+            var requrl = "/Home/_DeleteConfirm/" + id;
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                cashe: false,
+                url: requrl,
+                success: function(data) {
+                    //alert(data);
+                    if (data == "fail") {
+                        alert("Failed to change data, please try later.");
+                        return;
+                    }
+                    $("#ModalDelete" + id).modal('hide');
+                    //$("#item" + id).hide();
+                    $("#ModalDelete" + id).parent().parent().hide();
+                },
+                error: function(failure) {
+                    alert(failure.responseText);
+                }
+            });
+        }
+    </script>
+}

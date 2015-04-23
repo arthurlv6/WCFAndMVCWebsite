@@ -1,0 +1,7 @@
+D:\program\2015\Examination\Solution\Project.Contract\bin\Debug\Project.Contract.dll
+D:\program\2015\Examination\Solution\Project.Contract\bin\Debug\Project.Contract.pdb
+D:\program\2015\Examination\Solution\Project.Contract\bin\Debug\Project.Entities.dll
+D:\program\2015\Examination\Solution\Project.Contract\bin\Debug\Project.Entities.pdb
+D:\program\2015\Examination\Solution\Project.Contract\obj\Debug\Project.Contract.csprojResolveAssemblyReference.cache
+D:\program\2015\Examination\Solution\Project.Contract\obj\Debug\Project.Contract.dll
+D:\program\2015\Examination\Solution\Project.Contract\obj\Debug\Project.Contract.pdb

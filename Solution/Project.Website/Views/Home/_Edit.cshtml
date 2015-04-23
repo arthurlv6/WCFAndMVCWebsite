@@ -1,0 +1,75 @@
+﻿@model Vehicle
+@using (Ajax.BeginForm("_AddOrEdit", "Setting", new AjaxOptions { HttpMethod = "POST", OnSuccess = "OnSuccessReturnOperatorEdit" + Model.Id, OnFailure = "OnFailure" }, new { Id = "Ajaxform" }))
+{
+    <div class="modal-dialog" style="width: 1000px;">
+        <div class="modal-content" style="width: 1000px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Edit vehcile</h4>
+            </div>
+            <div class="modal-body">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-3" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.VehicleTypeId, htmlAttributes: new { @class = "control-label col-md-3" })
+                                <div class="col-md-9">
+                                    @Html.DropDownList("VehicleTypeId", null, htmlAttributes: new { @class = "form-control" })
+                                   
+
+                                    @Html.ValidationMessageFor(model => model.VehicleTypeId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Plate, htmlAttributes: new { @class = "control-label col-md-3" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.Plate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Plate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-3" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <img class="pull-left" src="/Images/Busy.gif" id=@Html.Raw("runing"+Model.Id) style="display: none" />
+                <label class="pull-left" id=@Html.Raw("comfirmMessage"+Model.Id)></label>
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    function @Html.Raw("OnSuccessReturnOperatorEdit"+@Model.Id.ToString()+"(data, status, xhr)") {
+        var busy=@Html.Raw("'"+"#runing"+Model.Id+"'");
+        $(busy).css("display", "block");
+        var modalId = @Html.Raw("'"+"#ModalEdit" + @Model.Id + "'");
+        //alert(modalId);
+        if (data == "fail") {
+            $("#comfirmMessage"+@Model.Id).text("Please check your input data and contact your administrator.");
+            $(busy).css("display", "none");
+        } else{
+            $(modalId).modal("hide");
+            $('form#searchform').submit();
+        }
+    }
+</script>

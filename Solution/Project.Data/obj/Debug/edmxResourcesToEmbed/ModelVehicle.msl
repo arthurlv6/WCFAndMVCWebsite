@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectDataProjectDbContextModelStoreContainer" CdmEntityContainer="VehicleEntities">
+    <FunctionImportMapping FunctionImportName="sp_add" FunctionName="Project.Data.ProjectDbContextModel.Store.sp_add" />
+    <FunctionImportMapping FunctionImportName="sp_del" FunctionName="Project.Data.ProjectDbContextModel.Store.sp_del" />
+    <FunctionImportMapping FunctionImportName="sp_update" FunctionName="Project.Data.ProjectDbContextModel.Store.sp_update" />
+    <FunctionImportMapping FunctionImportName="sp_vehicleData" FunctionName="Project.Data.ProjectDbContextModel.Store.sp_vehicleData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Project.Data.ProjectDbContextModel.sp_vehicleData_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Plate" ColumnName="Plate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_vehicleTypeData" FunctionName="Project.Data.ProjectDbContextModel.Store.sp_vehicleTypeData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Project.Data.ProjectDbContextModel.sp_vehicleTypeData_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,12 @@
+D:\program\2015\Examination\Solution\Project.Data\bin\Debug\Project.Data.dll.config
+D:\program\2015\Examination\Solution\Project.Data\bin\Debug\Project.Data.dll
+D:\program\2015\Examination\Solution\Project.Data\bin\Debug\Project.Data.pdb
+D:\program\2015\Examination\Solution\Project.Data\bin\Debug\EntityFramework.dll
+D:\program\2015\Examination\Solution\Project.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\program\2015\Examination\Solution\Project.Data\bin\Debug\Project.Entities.dll
+D:\program\2015\Examination\Solution\Project.Data\bin\Debug\Project.Entities.pdb
+D:\program\2015\Examination\Solution\Project.Data\bin\Debug\EntityFramework.xml
+D:\program\2015\Examination\Solution\Project.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\program\2015\Examination\Solution\Project.Data\obj\Debug\Project.Data.csprojResolveAssemblyReference.cache
+D:\program\2015\Examination\Solution\Project.Data\obj\Debug\Project.Data.dll
+D:\program\2015\Examination\Solution\Project.Data\obj\Debug\Project.Data.pdb
