@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f549aa9f-6716-487e-bc0f-bb5fb09b528d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/Project.Service/Service/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="4dc31e6f-04be-4aaf-a33a-2c9ce40fdcac" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Project.Service/Service/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="aecf34f3-fe29-46cf-862b-5086ac0cbe1a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Project.Service/Service/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="eb94c64e-ff1a-45e2-9b33-cbfe4247efaf" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Project.Service/Service/mex" />
+    <MetadataFile FileName="Project.Contract.xsd" MetadataType="Schema" ID="8478ede7-cee2-43f9-95cc-a0ab8febae10" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Project.Service/Service/mex" />
+    <MetadataFile FileName="Project.Entities.xsd" MetadataType="Schema" ID="84c75eae-acd9-4bec-9579-b87113a2a4cd" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Project.Service/Service/mex" />
+    <MetadataFile FileName="System.Data.SqlClient.xsd" MetadataType="Schema" ID="ae0823bc-7f57-4059-b903-3cec0d2cd2c2" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Project.Service/Service/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

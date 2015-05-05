@@ -7,9 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.ServiceModel.Channels;
-using Project.Website.ServiceReferenceVehicle;
+using Project.Contract;
+using Project.Website.ServiceAccess.ServiceReference;
 
-namespace Project.Website.Service
+namespace Project.Website.ServiceAccess.Service
 {
     public class Proxy : ClientBase<IService>, IService
     {

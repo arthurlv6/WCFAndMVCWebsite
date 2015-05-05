@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project.Website.ServiceReferenceVehicle {
+namespace Project.Website.ServiceAccess.ServiceReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReferenceVehicle.IService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IService")]
     public interface IService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetVehiclesByCondition", ReplyAction="http://tempuri.org/IService/GetVehiclesByConditionResponse")]
@@ -47,12 +47,12 @@ namespace Project.Website.ServiceReferenceVehicle {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceChannel : Project.Website.ServiceReferenceVehicle.IService, System.ServiceModel.IClientChannel {
+    public interface IServiceChannel : Project.Website.ServiceAccess.ServiceReference.IService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceClient : System.ServiceModel.ClientBase<Project.Website.ServiceReferenceVehicle.IService>, Project.Website.ServiceReferenceVehicle.IService {
+    public partial class ServiceClient : System.ServiceModel.ClientBase<Project.Website.ServiceAccess.ServiceReference.IService>, Project.Website.ServiceAccess.ServiceReference.IService {
         
         public ServiceClient() {
         }

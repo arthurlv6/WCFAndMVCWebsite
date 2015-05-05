@@ -5,76 +5,91 @@ using System.ServiceModel;
 using System.Web.Caching;
 using System.Web.Mvc;
 using Project.Entities;
-using Project.Website.Service;
-using Project.Website.ServiceReferenceVehicle;
+using Project.Website.ServiceAccess;
 using Project.Contract;
 
 namespace Project.Website.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IVehicleContainer _vc;
+        public HomeController(IVehicleContainer iVehicleContainer)
+        {
+            _vc = iVehicleContainer;
+        }
         public ActionResult Index()
         {
-            var types = ReturnVehicleTypesCache();
-            ViewBag.VehicleTypeId = new SelectList(types.Select(d => new { d.Id, d.Name }), "Id", "Name");
-
-            var vehicles = ExceptionHandle((p, c) => p.GetVehiclesByCondition(c), new Proxy(), new SearchReturn() { CurrentPage = 1, PerPageSize = 10, Search = "" });
-            if (types != null)
+            try
             {
-                foreach (var vehicle in vehicles.Data)
+                var types = ReturnVehicleTypesCache();
+                ViewBag.VehicleTypeId = new SelectList(types.Select(d => new { d.Id, d.Name }), "Id", "Name");
+                var vehicles = _vc.GetVehicles(new SearchReturn() { CurrentPage = 1, PerPageSize = 10, Search = "" });
+                if (types != null)
                 {
-
-                    var typeText = types.FirstOrDefault(d => d.Id == vehicle.VehicleTypeId);
-                    vehicle.Type = typeText == null ? "Unknow" : typeText.Name;
-                } 
+                    foreach (var vehicle in vehicles.Data)
+                    {
+                        var typeText = types.FirstOrDefault(d => d.Id == vehicle.VehicleTypeId);
+                        vehicle.Type = typeText == null ? "Unknow" : typeText.Name;
+                    }
+                }
+                return View(vehicles);
             }
-            return View(vehicles);
+            catch (Exception)
+            {
+                throw new Exception("Fail to get data.");
+            }
+           
         }
-
-        
         [HttpPost]
         public ActionResult Index(SearchReturn input)
         {
-            var types = ReturnVehicleTypesCache();
-            ViewBag.VehicleTypeId = new SelectList(types.Select(d => new { d.Id, d.Name }), "Id", "Name");
-            input.Search = input.Search ?? "";
-            var vehicles= ExceptionHandle((p, c) => p.GetVehiclesByCondition(c), new Proxy(), input);
-            if (types != null)
+            try
             {
-                foreach (var vehicle in vehicles.Data)
+                var types = ReturnVehicleTypesCache();
+                ViewBag.VehicleTypeId = new SelectList(types.Select(d => new { d.Id, d.Name }), "Id", "Name");
+                input.Search = input.Search ?? "";
+                var vehicles = _vc.GetVehicles(input);
+                if (types != null)
                 {
-
-                    var typeText = types.FirstOrDefault(d => d.Id == vehicle.VehicleTypeId);
-                    vehicle.Type = typeText == null ? "Unknow" : typeText.Name;
+                    foreach (var vehicle in vehicles.Data)
+                    {
+                        var typeText = types.FirstOrDefault(d => d.Id == vehicle.VehicleTypeId);
+                        vehicle.Type = typeText == null ? "Unknow" : typeText.Name;
+                    }
                 }
+                return View(vehicles);
             }
-            return View(vehicles);
+            catch (Exception)
+            {
+                throw new Exception("fail to get data by conditions.");
+            }
+           
         }
-        
         public JsonResult _DeleteConfirm(int id)
         {
-            return ExceptionHandle((p, productId) =>
+            try
             {
-                p.Delete(productId);
+                _vc.DeleteVehicle(id);
                 return Json("success", JsonRequestBehavior.AllowGet);
-            },new Proxy(),id );
+            }
+            catch (Exception)
+            {
+                return Json("fail", JsonRequestBehavior.AllowGet);
+            }
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public JsonResult _AddOrEdit(Vehicle vehicle)
         {
-            return ExceptionHandle((p,v) =>
+            try
             {
-                if (v.Id == 0)
-                {
-                    p.Create(vehicle);
-                }
-                else
-                {
-                    p.Update(vehicle);
-                }
+                _vc.AddOrEdit(vehicle);
                 return Json("success", JsonRequestBehavior.AllowGet);
-            },new Proxy(),vehicle );
+            }
+            catch (Exception)
+            {
+                return Json("fail", JsonRequestBehavior.AllowGet);
+            }
         }
         private IEnumerable<VehicleType> ReturnVehicleTypesCache()
         {
@@ -82,7 +97,7 @@ namespace Project.Website.Controllers
             var vechicleTypeCache = HttpContext.Cache[cacheKey] as List<VehicleType>;
             if (vechicleTypeCache == null)
             {
-                vechicleTypeCache = ExceptionHandle((p) => p.GetVehicleTypes().ToList(), new Proxy());
+                vechicleTypeCache = _vc.GetVehicleTypes();
                 HttpContext.Cache.Add(
                     cacheKey,
                     vechicleTypeCache,
@@ -94,67 +109,5 @@ namespace Project.Website.Controllers
             }
             return vechicleTypeCache;
         }
-        #region exception
-        private JsonResult ExceptionHandle(Func<Proxy,Vehicle, JsonResult> func, Proxy p, Vehicle v)
-        {
-            try
-            {
-                return func.Invoke(p,v);
-            }
-            catch (Exception)
-            {
-                return Json("fail", JsonRequestBehavior.AllowGet);
-            }
-            finally
-            {
-                p.Close();
-            }
-        }
-        private JsonResult ExceptionHandle(Func<Proxy, int, JsonResult> func, Proxy p, int id)
-        {
-            try
-            {
-                return func.Invoke(p, id);
-            }
-            catch (Exception)
-            {
-                return Json("fail", JsonRequestBehavior.AllowGet);
-            }
-            finally
-            {
-                p.Close();
-            }
-        }
-        private SearchReturn ExceptionHandle(Func<Proxy, SearchReturn, SearchReturn> func, Proxy p, SearchReturn c)
-        {
-            try
-            {
-                return func.Invoke(p, c);
-            }
-            catch (FaultException<CustomizedException> ex)
-            {
-                throw new Exception(string.Format("Message:{0}; Datetime:{1}; From User:{2}",ex.Detail.Message,ex.Detail.When,ex.Detail.User));
-            }
-            finally
-            {
-                p.Close();
-            }
-        }
-        private List<VehicleType> ExceptionHandle(Func<Proxy, List<VehicleType>> func, Proxy p)
-        {
-            try
-            {
-                return func.Invoke(p);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-            finally
-            {
-                p.Close();
-            }
-        }
-        #endregion
     }
 }
