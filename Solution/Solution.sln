@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40302.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Service", "Project.Service\Project.Service.csproj", "{80BE212C-B4DB-4D5C-BF91-242F72ED083B}"
 EndProject
@@ -19,7 +19,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Website.ServiceAccess", "Project.Website.ServiceAccess\Project.Website.ServiceAccess.csproj", "{DD240BE6-5E8C-45AF-ADA6-524E6F82E6A9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{80BE212C-B4DB-4D5C-BF91-242F72ED083B} = {80BE212C-B4DB-4D5C-BF91-242F72ED083B}
+		{E12063D7-0BF6-4DB5-9289-54534210C570} = {E12063D7-0BF6-4DB5-9289-54534210C570}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.IISHost", "Project.IISHost\Project.IISHost.csproj", "{E12063D7-0BF6-4DB5-9289-54534210C570}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +54,10 @@ Global
 		{DD240BE6-5E8C-45AF-ADA6-524E6F82E6A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD240BE6-5E8C-45AF-ADA6-524E6F82E6A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD240BE6-5E8C-45AF-ADA6-524E6F82E6A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E12063D7-0BF6-4DB5-9289-54534210C570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E12063D7-0BF6-4DB5-9289-54534210C570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E12063D7-0BF6-4DB5-9289-54534210C570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E12063D7-0BF6-4DB5-9289-54534210C570}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

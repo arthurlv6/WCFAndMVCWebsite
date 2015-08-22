@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.ServiceModel.Channels;
 using Project.Contract;
-using Project.Website.ServiceAccess.ServiceReference;
+using Project.Website.ServiceAccess.ServiceIIS;
 
 namespace Project.Website.ServiceAccess.Service
 {

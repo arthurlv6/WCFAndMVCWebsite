@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseContainer.cs" />
-    <Compile Include="Service References\ServiceReference\Reference.cs">
+    <Compile Include="Service References\ServiceIIS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -58,22 +58,22 @@
     <None Include="app.config" />
     <None Include="Properties\DataSources\Project.Contract.SearchReturn.datasource" />
     <None Include="Properties\DataSources\Project.Entities.VehicleType.datasource" />
-    <None Include="Service References\ServiceReference\Project.Contract.xsd">
+    <None Include="Service References\ServiceIIS\IISService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\Project.Entities.xsd">
+    <None Include="Service References\ServiceIIS\IISService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\service.wsdl" />
-    <None Include="Service References\ServiceReference\service.xsd">
+    <None Include="Service References\ServiceIIS\IISService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\service1.xsd">
+    <None Include="Service References\ServiceIIS\IISService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\System.Data.SqlClient.xsd">
+    <None Include="Service References\ServiceIIS\IISService4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ServiceIIS\Service.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Project.Contract\Project.Contract.csproj">
@@ -86,16 +86,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ServiceReference\" />
+    <WCFMetadataStorage Include="Service References\ServiceIIS\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\ServiceIIS\IISService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ServiceIIS\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReference\Reference.svcmap">
+    <None Include="Service References\ServiceIIS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceIIS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

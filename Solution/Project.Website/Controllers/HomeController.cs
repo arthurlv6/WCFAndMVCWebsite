@@ -34,7 +34,7 @@ namespace Project.Website.Controllers
                 }
                 return View(vehicles);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw new Exception("Fail to get data.");
             }

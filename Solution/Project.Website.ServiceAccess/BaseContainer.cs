@@ -62,7 +62,7 @@ namespace Project.Website.ServiceAccess
             {
                 return func.Invoke(p);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return null;
             }
